@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronom&egrave;tre &agrave; paliers</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-theme="dark">
+  <main class="app">
+    <section class="timer-panel" aria-label="Chronometre">
+      <header class="header">
+        <span class="title-group">
+          <h1>Palier</h1>
+        </span>
+        <button class="btn btn-ghost theme-toggle" id="themeToggle" type="button">Mode clair</button>
+      </header>
+
+      <section class="gauge-wrapper" aria-label="Progression du chronometre">
+        <header class="timer-display">
+          <div class="timer-big" id="timerDisplay">00:00</div>
+          <div class="timer-remaining" id="timerRemaining">&mdash; : &mdash;</div>
+          <div class="next-milestone" id="nextMilestone"></div>
+        </header>
+
+        <div class="progress-bar-wrap gauge-progress">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+
+        <section class="gauge-container" aria-label="Jauge verticale">
+          <div class="gauge-bar-area">
+            <div class="gauge-track" id="gaugeTrack">
+              <div class="gauge-fill" id="gaugeFill"></div>
+            </div>
+          </div>
+          <div class="gauge-labels" id="gaugeLabels">
+            <div class="gauge-time-end"><span></span>Fin</div>
+            <div class="gauge-time-start"><span></span>D&eacute;but</div>
+          </div>
+        </section>
+
+        <div class="done-badge" id="doneBadge">&#10003; Termin&eacute;</div>
+      </section>
+
+      <nav class="controls" aria-label="Controles du chronometre">
+        <button class="btn btn-primary" id="btnStartPause" type="button">D&eacute;marrer</button>
+        <button class="btn btn-ghost" id="btnReset" type="button">R&eacute;initialiser</button>
+      </nav>
+    </section>
+
+    <aside class="config-panel" aria-label="Configuration du chronometre">
+      <section class="config-section">
+        <h2 class="section-title">Dur&eacute;e totale</h2>
+        <div class="duration-row">
+          <label class="duration-field">
+            <span class="field-label">MIN</span>
+            <input type="number" id="inputMinutes" value="10" min="0" max="99">
+          </label>
+          <span class="separator">:</span>
+          <label class="duration-field">
+            <span class="field-label">SEC</span>
+            <input type="number" id="inputSeconds" value="0" min="0" max="59">
+          </label>
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <section class="config-section">
+        <h2 class="section-title">Ajouter un palier</h2>
+        <div class="milestone-form">
+          <input type="text" id="msLabel" placeholder="Note du palier..." maxlength="60">
+          <div class="milestone-time-row">
+            <input type="number" id="msMin" placeholder="05" min="0" max="99">
+            <span class="sep">:</span>
+            <input type="number" id="msSec" placeholder="00" min="0" max="59">
+          </div>
+          <button class="btn-add" id="addMilestoneBtn" type="button">+ Ajouter le palier</button>
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <section class="config-section">
+        <h2 class="section-title">Paliers <span id="milestonesCount">(0)</span></h2>
+        <div class="milestones-list" id="milestonesList">
+          <div class="empty-milestones">Aucun palier d&eacute;fini</div>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <p class="system-version" aria-label="Version du systeme">Timer v1.1.0</p>
+  <div class="notif" id="notif" role="status" aria-live="polite"></div>
+</body>
+</html>
